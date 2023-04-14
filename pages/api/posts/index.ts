@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     
     if (req.method === 'POST') {
-      const { currentUser } = await serverAuth(req);
+      const { currentUser } = await serverAuth(req, res);
       const { body } = req.body;
 
       const post = await prisma.post.create({
@@ -37,7 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             userId
           },
           include: {
-            User: true,
+            user: true,
             comments: true
           },
           orderBy: {
@@ -47,7 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       } else {
         posts = await prisma.post.findMany({
           include: {
-            User: true,
+            user: true,
             comments: true
           },
           orderBy: {

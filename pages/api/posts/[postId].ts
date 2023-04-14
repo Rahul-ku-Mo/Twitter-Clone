@@ -19,10 +19,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         id: postId,
       },
       include: {
-        User: true,
+        user: true,
         comments: {
           include: {
-            User: true
+            user: true
           },
           orderBy: {
             createdAt: 'desc'

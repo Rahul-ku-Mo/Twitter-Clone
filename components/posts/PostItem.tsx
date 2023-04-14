@@ -22,8 +22,8 @@ const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
 
   const goToUser = useCallback((ev: any) => {
     ev.stopPropagation();
-    router.push(`/users/${data.User.id}`)
-  }, [router, data.User.id]);
+    router.push(`/users/${data.user.id}`)
+  }, [router, data.user.id]);
 
   const goToPost = useCallback(() => {
     router.push(`/posts/${data.id}`);
@@ -49,7 +49,6 @@ const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
     return formatDistanceToNowStrict(new Date(data.createdAt));
   }, [data.createdAt])
 
-  
   return (
     <div 
       onClick={goToPost}
@@ -62,7 +61,7 @@ const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
         transition
       ">
       <div className="flex flex-row items-start gap-3">
-        <Avatar userId={data.User.id} />
+        <Avatar userId={data.user.id} />
         <div>
           <div className="flex flex-row items-center gap-2">
             <p 
@@ -73,7 +72,7 @@ const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
                 cursor-pointer 
                 hover:underline
             ">
-              {data.User.name}
+              {data.user.name}
             </p>
             <span 
               onClick={goToUser} 
@@ -84,7 +83,7 @@ const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
                 hidden
                 md:block
             ">
-              @{data.User.username}
+              @{data.user.username}
             </span>
             <span className="text-neutral-500 text-sm">
               {createdAt}

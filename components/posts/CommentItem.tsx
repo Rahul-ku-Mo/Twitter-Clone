@@ -14,8 +14,8 @@ const CommentItem: React.FC<CommentItemProps> = ({ data = {} }) => {
   const goToUser = useCallback((ev: any) => {
     ev.stopPropagation();
 
-    router.push(`/users/${data.User.id}`)
-  }, [router, data.User.id]);
+    router.push(`/users/${data.user.id}`)
+  }, [router, data.user.id]);
 
   const createdAt = useMemo(() => {
     if (!data?.createdAt) {
@@ -36,7 +36,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ data = {} }) => {
         transition
       ">
       <div className="flex flex-row items-start gap-3">
-        <Avatar userId={data.User.id} />
+        <Avatar userId={data.user.id} />
         <div>
           <div className="flex flex-row items-center gap-2">
             <p 
@@ -47,7 +47,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ data = {} }) => {
                 cursor-pointer 
                 hover:underline
             ">
-              {data.User.name}
+              {data.user.name}
             </p>
             <span 
               onClick={goToUser} 
@@ -58,7 +58,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ data = {} }) => {
                 hidden
                 md:block
             ">
-              @{data.User.username}
+              @{data.user.username}
             </span>
             <span className="text-neutral-500 text-sm">
               {createdAt}

@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const { currentUser } = await serverAuth(req);
+    const { currentUser } = await serverAuth(req, res);
     const { body } = req.body;
     const { postId } = req.query;
 
@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
     });
 
-    // // NOTIFICATION PART START
+    // NOTIFICATION PART START
     try {
       const post = await prisma.post.findUnique({
         where: {
@@ -36,7 +36,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (post?.userId) {
         await prisma.notification.create({
           data: {
-            body: 'Someone replied on your tweet! ',
+            body: 'Someone replied on your tweet!',
             userId: post.userId
           }
         });
@@ -46,7 +46,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             id: post.userId
           },
           data: {
-            hasNotifications: true
+            hasNotification: true
           }
         });
       }
@@ -54,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     catch (error) {
       console.log(error);
     }
-    // // NOTIFICATION PART END
+    // NOTIFICATION PART END
 
     return res.status(200).json(comment);
   } catch (error) {
