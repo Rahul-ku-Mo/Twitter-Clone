@@ -7,15 +7,13 @@ This is a repository for a FullStack Twitter clone tutorial using React, NextJS,
 
 The funcionalities of this app :
 
-- Authentication system
-- Notification system
+- Authentication and Notification 
 - Image Upload using Base64 strings
 - Prisma ORM with MongoDB
-- Responsive Layout
 - 1 To Many Relations (User - Post)
 - Many To Many Relations (Post - Comment)
-- Following functionality
-- Comments / Replies
+- Following and Followers
+- Comments / Replies on different (No nested Comments)
 - Likes functionality
 - Vercel Deployment
 
