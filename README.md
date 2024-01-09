@@ -21,12 +21,11 @@ The funcionalities of this app :
 
 **Node version 14.x**
 
+###
+User: test12.com
+password test123
 
-### Setup .env file
-
-DATABASE_URL=
-NEXTAUTH_JWT_SECRET=
-NEXTAUTH_SECRET=
+user: 
 
 ### Start the app
 
